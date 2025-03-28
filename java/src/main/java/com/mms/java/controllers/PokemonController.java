@@ -2,11 +2,11 @@ package com.mms.java.controllers;
 
 import com.mms.java.entity.Pokemon;
 import com.mms.java.service.PokemonService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/pokemon")
@@ -21,6 +21,11 @@ public class PokemonController {
     @GetMapping
     public List<Pokemon> getPokemon() {
         return pokemonService.getPokemon();
+    }
+
+    @GetMapping(path = "{pokemonName}")
+    public Optional<Pokemon> getPokemonByName(@PathVariable("pokemonName") String name) {
+        return pokemonService.getPokemonByName(name);
     }
 
     @PostMapping

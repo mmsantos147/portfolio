@@ -24,6 +24,15 @@ public class PokemonService {
         return pokemonRepository.findAll();
     }
 
+    public Optional<Pokemon> getPokemonByName(String name) {
+        Optional<Pokemon> pokemonByName = pokemonRepository.findPokemonByName(name);
+        if(pokemonByName.isEmpty()) {
+            throw new IllegalStateException("pokemon with name" + name + "does not exists");
+        }
+
+        return pokemonByName;
+    }
+
     public void addNewPokemon(Pokemon pokemon){
         Optional<Pokemon> pokemonByName = pokemonRepository.findPokemonByName(pokemon.getName());
         if (pokemonByName.isPresent()) {

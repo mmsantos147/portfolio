@@ -41,4 +41,12 @@ public class UserService {
 
         userRepository.deleteById(userEmail.get().getId());
     }
+
+    public Optional<User> getUserByEmail(String email) {
+        Optional<User> userEmail = userRepository.findUserByEmail(email);
+        if(userEmail.isEmpty()) {
+            throw new IllegalStateException("user with email" + email + "does not exists");
+        }
+    return userEmail;
+    }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mms.java.entity.Pokemon;
 import com.mms.java.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,8 @@ public class PokemonController {
         this.pokemonService = pokemonService;
         this.objectMapper = objectMapper;
     }
+
+
 
     @GetMapping
     public List<Pokemon> getPokemon() {

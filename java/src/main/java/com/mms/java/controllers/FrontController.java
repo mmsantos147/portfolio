@@ -20,7 +20,7 @@ public class FrontController {
         this.apiService = apiService;
     }
 
-    @GetMapping("/pokemon")
+    @GetMapping("/pokemon/list")
     public String getPokemon(Model model){
 
         Pokemon pokemon = new Pokemon();
@@ -31,15 +31,15 @@ public class FrontController {
         return "pokemons";
     }
 
-    @RequestMapping("/processPokeSearch")
+    @RequestMapping("/pokemon/search")
     public String processPokeSearch(@ModelAttribute("pokemon") Pokemon pokemon, Model model) {
         System.out.println(pokemon.getName());
-        Pokemon pokemonName = apiService.getPokemonByName(pokemon.getName());
+        List<Pokemon> pokemonName = apiService.getPokemonByName(pokemon.getName());
         if (pokemonName == null) {
             return "pokemons";
         }
-        System.out.println(pokemonName);
-        model.addAttribute("pokemon", pokemonName);
+        model.addAttribute("pokemon", pokemon);
+        model.addAttribute("pokemons", pokemonName);
         return "processPokemonSearch";
     }
 

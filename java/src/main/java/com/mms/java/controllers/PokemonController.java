@@ -36,6 +36,11 @@ public class PokemonController {
         return pokemonService.getPokemonByName(name);
     }
 
+    @GetMapping(path = "/search/{pokemonName}")
+    public List<Pokemon> getPokemonsByName(@PathVariable("pokemonName") String name) {
+        return pokemonService.getPokemonsByName(name);
+    }
+
     @PostMapping
     public void registerNewPokemon(@RequestBody Pokemon pokemon) {
         pokemonService.addNewPokemon(pokemon);

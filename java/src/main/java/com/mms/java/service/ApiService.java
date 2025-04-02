@@ -42,13 +42,13 @@ public class ApiService {
         return response.getBody();
     }
 
-    public Pokemon getPokemonByName(String name) {
-        String url = "http://localhost:8080/api/pokemon/"  + name;
-        ResponseEntity<Pokemon> response = restTemplate.exchange(
+    public List<Pokemon> getPokemonByName(String name) {
+        String url = "http://localhost:8080/api/pokemon/search/"  + name;
+        ResponseEntity<List<Pokemon>> response = restTemplate.exchange(
                 url,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Pokemon>() {}
+                new ParameterizedTypeReference<List<Pokemon>>() {}
         );
         return response.getBody();
     }

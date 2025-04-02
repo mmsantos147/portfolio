@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Pokemons</h1>
-    <form th:action="@{/processPokeSearch}" th:object="${pokemon}" method="POST">
+    <form th:action="@{/pokemon/search}" th:object="${pokemon}" method="POST">
         <label for="name">Pokémon Name:</label>
         <input type="text" id="name" th:field="*{name}" placeholder="Enter Pokémon name"/>
         <input type="submit" value="Submit"/>
